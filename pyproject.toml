@@ -1,0 +1,40 @@
+[project]
+name = "google-ads-mcp-server"
+version = "0.2.2"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+dependencies = [
+    "google-ads>=31.0.0",
+    "mcp[cli]>=1.2.0",
+    "fastmcp>=3.2.0",
+]
+
+description = "Remote MCP server for monitoring and managing Google Ads accounts with Claude and other AI assistants."
+readme = "README.md"
+keywords = ["Google Ads", "Google Ads API", "MCP", "Claude"]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Programming Language :: Python",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "black",
+]
+
+[project.scripts]
+google-ads-mcp = "ads_mcp.server:run_server"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["ads_mcp", "ads_mcp.tools"]
+
+[tool.setuptools.package-data]
+ads_mcp = ["gaql_resources.txt"]
+
+[tool.black]
+line-length = 80
